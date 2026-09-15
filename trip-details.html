@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Royal Rajasthan Tour - TripwithMe</title>
+    <meta
+      name="description"
+      content="Experience the Royal Rajasthan Tour itinerary."
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Header -->
+        <header class="header glassmorphism">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="var(--primary-accent)"
+            width="32"
+            height="32"
+            class="logo-icon"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+            />
+          </svg>
+          Tripwith<span>Me</span>
+        </a>
+
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="28" height="28">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </label>
+
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="packages.html" class="nav-link">Destinations</a></li>
+          <li><a href="#" class="nav-link">About Us</a></li>
+          <li><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="header-controls">
+          <select id="currency-select" aria-label="Currency" class="glass-select">
+            <option value="INR">INR ₹</option>
+            <option value="USD">USD $</option>
+            <option value="EUR">EUR €</option>
+          </select>
+          <label style="display: flex; align-items: center; cursor: pointer" title="Toggle Dark Mode" class="theme-toggle-label">
+            <input type="checkbox" id="theme-toggle" style="display: none" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20" class="theme-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
+            </svg>
+          </label>
+          <a href="login.html" class="btn btn-primary cta-btn">Book Now</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Trip Hero: Day/Night Reveal -->
+    <div class="hero" style="position: relative; overflow: hidden; padding: 0">
+      <!-- Night Image -->
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background:
+            linear-gradient(rgba(0, 0, 128, 0.4), rgba(0, 0, 128, 0.6)),
+            url(&quot;images/kerala-details.jpg&quot;)
+              center/cover;
+          filter: brightness(0.5) contrast(1.2);
+        "
+      ></div>
+      <!-- Day Image -->
+      <div
+        id="day-image"
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 100%;
+          background:
+            linear-gradient(rgba(0, 0, 128, 0.2), rgba(0, 0, 128, 0.4)),
+            url(&quot;images/rajasthan.jpg&quot;)
+              center/cover;
+          border-right: 4px solid var(--primary-accent);
+        "
+      ></div>
+
+      <input
+        type="range"
+        min="0"
+        max="100"
+        value="50"
+        aria-label="Toggle Day and Night View"
+        style="
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: ew-resize;
+          z-index: 10;
+        "
+        oninput="
+          document.getElementById('day-image').style.width = this.value + '%'
+        "
+      />
+
+      <div
+        class="hero-content pointer-events-none"
+        style="z-index: 1; pointer-events: none"
+      >
+        <h1>Royal Rajasthan Tour</h1>
+        <p>7 Days / 6 Nights • Jaipur, Jodhpur, Udaipur</p>
+        <p
+          style="
+            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 20px;
+            display: inline-block;
+          "
+        >
+          Drag to see Day & Night view
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Details Container -->
+    <main class="trip-details-container">
+      <!-- Left Column: Details & Itinerary -->
+      <div class="main-content">
+        <section class="state-overview">
+          <h2 style="color: var(--primary-base); margin-bottom: 1rem">
+            About the Trip
+          </h2>
+          <p>
+            Step into the land of maharajas, majestic forts, and vibrant
+            culture. This 7-day royal journey covers the Pink City of Jaipur,
+            the Blue City of Jodhpur, and the City of Lakes, Udaipur. Experience
+            rich heritage, stunning architecture, and authentic Rajasthani
+            cuisine.
+          </p>
+        </section>
+
+        <!-- Best Time to Visit (CSS Bar Chart) -->
+        <section>
+          <h3 style="color: var(--primary-base); margin: 2rem 0 1rem">
+            Best Time to Visit
+          </h3>
+          <div class="weather-chart">
+            <div class="chart-bar" style="height: 30%" title="30°C">
+              <span>Jan</span>
+            </div>
+            <div class="chart-bar" style="height: 40%" title="35°C">
+              <span>Feb</span>
+            </div>
+            <div
+              class="chart-bar"
+              style="height: 60%; background: #ff4d4d"
+              title="42°C"
+            >
+              <span>Mar</span>
+            </div>
+            <div
+              class="chart-bar"
+              style="height: 80%; background: #ff4d4d"
+              title="45°C"
+            >
+              <span>Apr</span>
+            </div>
+            <div
+              class="chart-bar"
+              style="height: 100%; background: #ff4d4d"
+              title="48°C"
+            >
+              <span>May</span>
+            </div>
+            <div
+              class="chart-bar"
+              style="height: 90%; background: #ff4d4d"
+              title="46°C"
+            >
+              <span>Jun</span>
+            </div>
+            <div class="chart-bar" style="height: 70%" title="40°C">
+              <span>Jul</span>
+            </div>
+            <div class="chart-bar" style="height: 60%" title="38°C">
+              <span>Aug</span>
+            </div>
+            <div class="chart-bar" style="height: 50%" title="36°C">
+              <span>Sep</span>
+            </div>
+            <div
+              class="chart-bar"
+              style="height: 40%; background: #28a745"
+              title="32°C"
+            >
+              <span>Oct</span>
+            </div>
+            <div
+              class="chart-bar"
+              style="height: 30%; background: #28a745"
+              title="28°C"
+            >
+              <span>Nov</span>
+            </div>
+            <div
+              class="chart-bar"
+              style="height: 25%; background: #28a745"
+              title="25°C"
+            >
+              <span>Dec</span>
+            </div>
+          </div>
+          <p
+            style="
+              text-align: right;
+              font-size: 0.8rem;
+              color: var(--text-light);
+              margin-top: 2rem;
+            "
+          >
+            Green = Recommended, Red = Hot
+          </p>
+        </section>
+
+        <!-- CSS Timeline Itinerary & Animated SVG Route -->
+        <section style="display: flex; gap: 2rem">
+          <div style="flex: 1">
+            <h3 style="color: var(--primary-base); margin: 2rem 0 1rem">
+              Itinerary
+            </h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-day">Day 1 & 2: Jaipur</div>
+                <div class="timeline-content">
+                  <h4>Arrival & The Pink City</h4>
+                  <p>
+                    Arrive in Jaipur. Visit the magnificent Amber Fort, Hawa
+                    Mahal, and City Palace. Evening stroll in the colorful
+                    Johari Bazaar.
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-day">Day 3 & 4: Jodhpur</div>
+                <div class="timeline-content">
+                  <h4>The Blue City</h4>
+                  <p>
+                    Drive to Jodhpur. Explore the imposing Mehrangarh Fort
+                    overlooking the blue houses. Visit Jaswant Thada and enjoy a
+                    desert safari at Osian.
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-day">Day 5 & 6: Udaipur</div>
+                <div class="timeline-content">
+                  <h4>The City of Lakes</h4>
+                  <p>
+                    Journey to Udaipur. Boat ride on Lake Pichola, visit the
+                    grand City Palace and Jag Mandir. Experience a traditional
+                    puppet show.
+                  </p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-day">Day 7: Departure</div>
+                <div class="timeline-content">
+                  <h4>Farewell Rajasthan</h4>
+                  <p>
+                    Morning visit to Saheliyon-ki-Bari. Transfer to the airport
+                    with fond memories of royal Rajasthan.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Animated SVG Map -->
+          <div
+            style="flex: 1; padding-top: 4rem"
+            class="animated-route hidden-mobile"
+          >
+            <svg
+              viewBox="0 0 200 400"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M50 50 C 150 100, 150 200, 50 250 C 20 300, 100 350, 150 380"
+                stroke="var(--primary-accent)"
+                stroke-width="4"
+                stroke-dasharray="10 10"
+              />
+              <circle cx="50" cy="50" r="8" fill="var(--primary-base)" />
+              <text x="65" y="55" fill="var(--text-dark)" font-size="12">
+                Jaipur
+              </text>
+
+              <circle cx="50" cy="250" r="8" fill="var(--primary-base)" />
+              <text x="65" y="255" fill="var(--text-dark)" font-size="12">
+                Jodhpur
+              </text>
+
+              <circle cx="150" cy="380" r="8" fill="var(--primary-base)" />
+              <text x="95" y="385" fill="var(--text-dark)" font-size="12">
+                Udaipur
+              </text>
+            </svg>
+          </div>
+        </section>
+
+        <!-- FAQ Accordion -->
+        <section>
+          <h3 style="color: var(--primary-base); margin: 2rem 0 1rem">
+            Frequently Asked Questions
+          </h3>
+          <details class="faq-details">
+            <summary>What is included in the package?</summary>
+            <p>
+              The package includes 3-star or 4-star accommodation, daily
+              breakfast, private AC transfers between cities, and all guided
+              sightseeing tours. Flights and monument entry fees are excluded.
+            </p>
+          </details>
+          <details class="faq-details">
+            <summary>What is the cancellation policy?</summary>
+            <p>
+              Free cancellation up to 7 days before departure. Cancellations
+              within 7 days incur a 50% fee. No-shows are non-refundable.
+            </p>
+          </details>
+          <details class="faq-details">
+            <summary>Is this trip suitable for children?</summary>
+            <p>
+              Yes, Rajasthan is a very family-friendly destination. We can
+              arrange child seats for the vehicle and specific kid-friendly
+              activities like puppet shows and light-and-sound shows.
+            </p>
+          </details>
+        </section>
+      </div>
+
+      <!-- Right Column: Sticky Booking Form (Multi-Step Wizard) -->
+      <aside>
+        <div class="booking-sidebar glass">
+          <div class="price-tag" id="total-price" data-base-price="28500">
+            ₹28,500
+          </div>
+          <p
+            style="
+              text-align: right;
+              margin-top: -10px;
+              margin-bottom: 20px;
+              color: var(--text-light);
+            "
+          >
+            Total Estimate
+          </p>
+
+          <form class="booking-form" id="booking-wizard">
+            <!-- Step 1: Dates & Guests -->
+            <div class="wizard-step active" id="step1">
+              <h4 style="margin-bottom: 1rem; color: var(--primary-base)">
+                Step 1: Your Trip Details
+              </h4>
+              <div class="form-group">
+                <label for="trip-date">Travel Date</label>
+                <input type="date" id="trip-date" required />
+              </div>
+              <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <select id="guests" required>
+                  <option value="1">1 Person</option>
+                  <option value="2" selected>2 People</option>
+                  <option value="3">3 People</option>
+                  <option value="4">4 People</option>
+                  <option value="5">5+ People</option>
+                </select>
+              </div>
+              <button
+                type="button"
+                class="btn btn-primary next-step"
+                style="width: 100%; margin-top: 1rem"
+              >
+                Next: Contact Info
+              </button>
+            </div>
+
+            <!-- Step 2: Contact Info -->
+            <div class="wizard-step" id="step2">
+              <h4 style="margin-bottom: 1rem; color: var(--primary-base)">
+                Step 2: Contact Information
+              </h4>
+              <div class="form-group">
+                <label for="contact-name">Full Name</label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  placeholder="John Doe"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input
+                  type="email"
+                  id="contact-email"
+                  placeholder="john@example.com"
+                  required
+                />
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 1rem">
+                <button
+                  type="button"
+                  class="btn prev-step"
+                  style="background: #eee; color: #333; flex: 1"
+                >
+                  Back
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary next-step"
+                  style="flex: 2"
+                >
+                  Review Booking
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Review & Submit -->
+            <div class="wizard-step" id="step3">
+              <h4 style="margin-bottom: 1rem; color: var(--primary-base)">
+                Step 3: Review
+              </h4>
+              <p
+                style="
+                  font-size: 0.9rem;
+                  margin-bottom: 1rem;
+                  color: var(--text-light);
+                "
+              >
+                By clicking confirm, you agree to our terms and conditions. No
+                payment is required today.
+              </p>
+              <div style="display: flex; gap: 10px; margin-top: 1rem">
+                <button
+                  type="button"
+                  class="btn prev-step"
+                  style="background: #eee; color: #333; flex: 1"
+                >
+                  Back
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="flex: 2"
+                  onclick="alert('Booking Confirmed! Check your email.')"
+                >
+                  Confirm Trip
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Floating WhatsApp -->
+    <a href="#" class="floating-whatsapp" title="Chat with us">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="currentColor"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"
+        />
+      </svg>
+    </a>
+
+    <!-- Footer -->
+        <footer class="footer creative-footer">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <a href="index.html" class="logo footer-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="var(--primary-accent)" width="32" height="32">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
+            </svg>
+            Tripwith<span>Me</span>
+          </a>
+          <p class="footer-tagline">Your trusted partner for discovering the incredible diversity and beauty of India.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="packages.html">All Packages</a></li>
+            <li><a href="#">Travel Guides</a></li>
+            <li><a href="#">Contact Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Top Destinations</h4>
+          <ul class="footer-links">
+            <li><a href="trip-details.html">Rajasthan Royals</a></li>
+            <li><a href="trip-details.html">Kerala Backwaters</a></li>
+            <li><a href="#">Spiti Valley</a></li>
+            <li><a href="#">Andaman Islands</a></li>
+          </ul>
+        </div>
+        <div class="footer-col newsletter-col">
+          <h4>Newsletter</h4>
+          <p>Subscribe for travel tips and exclusive offers.</p>
+          <form class="newsletter-form">
+            <div class="input-group">
+              <input type="email" placeholder="Your email address" required />
+              <button type="submit" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TripwithMe. Crafted with <span style="color:var(--primary-accent)">♥</span> for travelers.</p>
+      </div>
+    </footer>
+  </body>
+</html>
