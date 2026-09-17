@@ -189,32 +189,32 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 11. Authentication Page Logic (Login/Register Split Screen)
-  const authSlider = document.querySelectorAll('.slider-slide');
+  const authSlider = document.querySelectorAll(".slider-slide");
   if (authSlider.length > 0) {
     let currentSlide = 0;
     setInterval(() => {
-      authSlider[currentSlide].classList.remove('active');
+      authSlider[currentSlide].classList.remove("active");
       currentSlide = (currentSlide + 1) % authSlider.length;
-      authSlider[currentSlide].classList.add('active');
+      authSlider[currentSlide].classList.add("active");
     }, 5000); // Change image every 5 seconds
   }
 
-  const loginForm = document.getElementById('login-form');
-  const registerForm = document.getElementById('register-form');
-  const showRegisterBtn = document.getElementById('show-register');
-  const showLoginBtn = document.getElementById('show-login');
+  const loginForm = document.getElementById("login-form");
+  const registerForm = document.getElementById("register-form");
+  const showRegisterBtn = document.getElementById("show-register");
+  const showLoginBtn = document.getElementById("show-login");
 
   if (loginForm && registerForm && showRegisterBtn && showLoginBtn) {
-    showRegisterBtn.addEventListener('click', (e) => {
+    showRegisterBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      loginForm.classList.remove('active');
-      registerForm.classList.add('active');
+      loginForm.classList.remove("active");
+      registerForm.classList.add("active");
     });
 
-    showLoginBtn.addEventListener('click', (e) => {
+    showLoginBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      registerForm.classList.remove('active');
-      loginForm.classList.add('active');
+      registerForm.classList.remove("active");
+      loginForm.classList.add("active");
     });
   }
 });

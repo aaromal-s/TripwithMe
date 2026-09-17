@@ -8,35 +8,60 @@
     <script src="script.js" defer></script>
   </head>
   <body class="auth-page">
-    
     <a href="index.html" class="auth-back-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="24" height="24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        width="24"
+        height="24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+        />
       </svg>
       Back to Home
     </a>
 
     <div class="auth-container">
-      
       <!-- Left Side: Image Slider -->
       <div class="auth-left">
         <div class="auth-slider">
-          <div class="slider-slide active" style="background-image: url('images/kerala.jpg')">
+          <div
+            class="slider-slide active"
+            style="background-image: url(&quot;images/kerala.jpg&quot;)"
+          >
             <div class="slide-content">
               <h2>Discover Kerala</h2>
-              <p>Experience the tranquil backwaters and lush green landscapes.</p>
+              <p>
+                Experience the tranquil backwaters and lush green landscapes.
+              </p>
             </div>
           </div>
-          <div class="slider-slide" style="background-image: url('images/rajasthan.jpg')">
+          <div
+            class="slider-slide"
+            style="background-image: url(&quot;images/rajasthan.jpg&quot;)"
+          >
             <div class="slide-content">
               <h2>Royal Rajasthan</h2>
-              <p>Step into the land of kings, majestic forts, and rich heritage.</p>
+              <p>
+                Step into the land of kings, majestic forts, and rich heritage.
+              </p>
             </div>
           </div>
-          <div class="slider-slide" style="background-image: url('images/goa.jpg')">
+          <div
+            class="slider-slide"
+            style="background-image: url(&quot;images/goa.jpg&quot;)"
+          >
             <div class="slide-content">
               <h2>Vibrant Goa</h2>
-              <p>Unwind on sun-kissed beaches and enjoy the vibrant nightlife.</p>
+              <p>
+                Unwind on sun-kissed beaches and enjoy the vibrant nightlife.
+              </p>
             </div>
           </div>
         </div>
@@ -46,8 +71,20 @@
       <div class="auth-right">
         <div class="auth-card">
           <div class="auth-logo">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="var(--primary-accent)" width="40" height="40">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="var(--primary-accent)"
+              width="40"
+              height="40"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+              />
             </svg>
             <h2>Tripwith<span>Me</span></h2>
           </div>
@@ -59,12 +96,22 @@
 
             <div class="form-group">
               <label for="login-email">Email Address</label>
-              <input type="email" id="login-email" placeholder="you@example.com" required />
+              <input
+                type="email"
+                id="login-email"
+                placeholder="you@example.com"
+                required
+              />
             </div>
 
             <div class="form-group">
               <label for="login-password">Password</label>
-              <input type="password" id="login-password" placeholder="••••••••" required />
+              <input
+                type="password"
+                id="login-password"
+                placeholder="••••••••"
+                required
+              />
             </div>
 
             <div class="form-options">
@@ -74,10 +121,13 @@
               <a href="#" class="forgot-password">Forgot Password?</a>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">
+              Sign In
+            </button>
 
             <p class="auth-switch">
-              Don't have an account? <a href="#" id="show-register">Register here</a>
+              Don't have an account?
+              <a href="#" id="show-register">Register here</a>
             </p>
           </form>
 
@@ -88,29 +138,45 @@
 
             <div class="form-group">
               <label for="reg-name">Full Name</label>
-              <input type="text" id="reg-name" placeholder="John Doe" required />
+              <input
+                type="text"
+                id="reg-name"
+                placeholder="John Doe"
+                required
+              />
             </div>
 
             <div class="form-group">
               <label for="reg-email">Email Address</label>
-              <input type="email" id="reg-email" placeholder="you@example.com" required />
+              <input
+                type="email"
+                id="reg-email"
+                placeholder="you@example.com"
+                required
+              />
             </div>
 
             <div class="form-group">
               <label for="reg-password">Password</label>
-              <input type="password" id="reg-password" placeholder="Create a password" required />
+              <input
+                type="password"
+                id="reg-password"
+                placeholder="Create a password"
+                required
+              />
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+            <button type="submit" class="btn btn-primary btn-block">
+              Sign Up
+            </button>
 
             <p class="auth-switch">
-              Already have an account? <a href="#" id="show-login">Log in here</a>
+              Already have an account?
+              <a href="#" id="show-login">Log in here</a>
             </p>
           </form>
-
         </div>
       </div>
-
     </div>
   </body>
 </html>
