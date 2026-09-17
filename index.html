@@ -12,6 +12,26 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+      <svg
+        class="loader-plane"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        width="60"
+        height="60"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+        />
+      </svg>
+    </div>
+
     <!-- Header & Navigation -->
     <header class="header glassmorphism">
       <div class="nav-container">
@@ -100,7 +120,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" style="position: relative">
+    <section class="fade-in hero" style="background: transparent">
       <div class="video-hero-wrapper">
         <!-- Example video placeholder, using an image fallback if video fails -->
         <video autoplay muted loop playsinline poster="images/hero-bg.jpg">
@@ -108,7 +128,12 @@
         </video>
       </div>
       <div class="hero-content" style="z-index: 1">
-        <h1>Discover Incredible India</h1>
+        <h1>
+          Discover
+          <span class="typewriter-text" style="color: var(--primary-accent)"
+            >India</span
+          ><span class="typewriter-cursor"></span>
+        </h1>
         <p>Experience the culture, heritage, and beauty of Indian states</p>
 
         <!-- Search Overlay (Glassmorphism) -->
@@ -137,10 +162,10 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="fade-in features">
       <h2 class="section-title">Why Choose Us</h2>
       <div class="feature-grid">
-        <div class="feature-card">
+        <div class="feature-card fade-in">
           <div class="feature-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +188,7 @@
             Expertly planned trips covering hidden gems and popular landmarks.
           </p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card fade-in">
           <div class="feature-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +211,7 @@
             Verified partners and 24/7 on-ground support for your peace of mind.
           </p>
         </div>
-        <div class="feature-card">
+        <div class="feature-card fade-in">
           <div class="feature-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -212,46 +237,72 @@
       </div>
     </section>
 
+    <!-- Interactive Map Section -->
+    <section class="map-section fade-in">
+      <h2 class="section-title">Explore by Region</h2>
+      <div class="map-container">
+        <div class="map-svg-placeholder"></div>
+        <a
+          href="trip-details-rajasthan.html"
+          class="map-pin"
+          data-state="Rajasthan"
+          ><div class="map-pin-label">Rajasthan</div></a
+        >
+        <a
+          href="trip-details-himachal.html"
+          class="map-pin"
+          data-state="Himachal"
+          ><div class="map-pin-label">Himachal Pradesh</div></a
+        >
+        <a href="trip-details-goa.html" class="map-pin" data-state="Goa"
+          ><div class="map-pin-label">Goa</div></a
+        >
+        <a href="trip-details-kerala.html" class="map-pin" data-state="Kerala"
+          ><div class="map-pin-label">Kerala</div></a
+        >
+      </div>
+    </section>
+
     <!-- State Grid Section -->
-    <section class="states">
+    <section class="fade-in states">
       <h2 class="section-title">Popular States</h2>
       <div class="state-grid">
-        <a href="trip-details-kerala.html" class="state-card">
+        <a href="trip-details-kerala.html" class="state-card fade-in">
           <img src="images/kerala.jpg" alt="Kerala Backwaters" />
           <div class="state-overlay">
             <h3>Kerala</h3>
             <p>God's Own Country</p>
           </div>
         </a>
-        <a href="trip-details-kerala.html" class="state-card">
+        <a href="trip-details-kerala.html" class="state-card fade-in">
           <img src="images/rajasthan.jpg" alt="Rajasthan Fort" />
           <div class="state-overlay">
             <h3>Rajasthan</h3>
             <p>Land of Kings</p>
           </div>
         </a>
-        <a href="trip-details-himachal.html" class="state-card">
+        <a href="trip-details-himachal.html" class="state-card fade-in">
           <img src="images/himachal.jpg" alt="Himachal Mountains" />
           <div class="state-overlay">
             <h3>Himachal Pradesh</h3>
             <p>Snow-capped Peaks</p>
           </div>
         </a>
-        <a href="trip-details-goa.html" class="state-card">
+        <a href="trip-details-goa.html" class="state-card fade-in">
           <img src="images/goa.jpg" alt="Goa Beaches" />
           <div class="state-overlay">
             <h3>Goa</h3>
             <p>Sun, Sand & Sea</p>
           </div>
         </a>
-        <a href="trip-details-goa.html" class="state-card">
+        <a href="trip-details-goa.html" class="state-card fade-in">
           <img src="images/uttarakhand.jpg" alt="Uttarakhand Temples" />
           <div class="state-overlay">
             <h3>Uttarakhand</h3>
             <p>Devbhoomi</p>
           </div>
         </a>
-        <a href="trip-details-himachal.html" class="state-card">
+        <a href="trip-details-himachal.html" class="state-card fade-in">
           <img src="images/meghalaya.jpg" alt="Meghalaya Bridges" />
           <div class="state-overlay">
             <h3>Meghalaya</h3>
@@ -262,7 +313,7 @@
     </section>
 
     <!-- Testimonials Marquee -->
-    <section class="marquee-container">
+    <section class="fade-in marquee-container">
       <div class="marquee-content">
         <div class="marquee-item">
           <h4 style="color: var(--primary-accent)">
@@ -415,7 +466,7 @@
             ></a>
           </div>
         </div>
-        <div class="footer-col">
+        <div class="footer-col fade-in">
           <h4>Quick Links</h4>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
@@ -424,7 +475,7 @@
             <li><a href="#">Contact Support</a></li>
           </ul>
         </div>
-        <div class="footer-col">
+        <div class="footer-col fade-in">
           <h4>Top Destinations</h4>
           <ul class="footer-links">
             <li><a href="trip-details-kerala.html">Rajasthan Royals</a></li>

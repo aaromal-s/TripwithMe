@@ -218,3 +218,112 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// --- Preloader ---
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add("hidden");
+    }, 800);
+  }
+});
+
+// --- Custom Cursor ---
+const cursor = document.createElement("div");
+cursor.className = "custom-cursor";
+const follower = document.createElement("div");
+follower.className = "cursor-follower";
+document.body.appendChild(cursor);
+document.body.appendChild(follower);
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let followerX = mouseX;
+let followerY = mouseY;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + "px";
+  cursor.style.top = mouseY + "px";
+});
+
+// Smooth follower animation
+function animateFollower() {
+  followerX += (mouseX - followerX) * 0.15;
+  followerY += (mouseY - followerY) * 0.15;
+  follower.style.left = followerX + "px";
+  follower.style.top = followerY + "px";
+  requestAnimationFrame(animateFollower);
+}
+animateFollower();
+
+// Cursor Hover Effects
+const interactiveElements = document.querySelectorAll(
+  "a, button, input, select, .map-pin, .state-card, .pkg-card",
+);
+interactiveElements.forEach((el) => {
+  el.addEventListener("mouseenter", () =>
+    document.body.classList.add("cursor-hover"),
+  );
+  el.addEventListener("mouseleave", () =>
+    document.body.classList.remove("cursor-hover"),
+  );
+});
+
+// --- Scroll-Triggered Animations (AOS) ---
+const observerOptions = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.15,
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+
+// --- Typewriter Effect ---
+const typewriterText = document.querySelector(".typewriter-text");
+if (typewriterText) {
+  const words = ["Kerala", "Rajasthan", "Goa", "Himachal", "India"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typeSpeed = 150;
+
+  function type() {
+    const currentWord = words[wordIndex];
+
+    if (isDeleting) {
+      typewriterText.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+      typeSpeed = 50;
+    } else {
+      typewriterText.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+      typeSpeed = 150;
+    }
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      typeSpeed = 2000; // Pause at end
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      typeSpeed = 500; // Pause before new word
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
+  // Start typing
+  setTimeout(type, 1000);
+}
