@@ -85,6 +85,12 @@
         </ul>
 
         <div class="header-controls">
+          <!-- Global Search -->
+          <div class="search-container" style="position: relative; margin-right: 1rem;">
+            <input type="text" id="global-search" class="glass-input" placeholder="Search destinations..." style="padding: 0.5rem 1rem; border-radius: 20px; width: 200px;">
+            <div id="search-results" class="search-results glassmorphism" style="position: absolute; top: 110%; left: 0; width: 100%; border-radius: 8px; display: none; flex-direction: column; z-index: 1000; max-height: 300px; overflow-y: auto;"></div>
+          </div>
+
           <select
             id="currency-select"
             aria-label="Currency"
@@ -202,10 +208,7 @@
             About the Trip
           </h2>
           <p>
-            Explore the majestic peaks and serene valleys of Himachal Pradesh.
-            This 6-day journey takes you through the colonial charm of Shimla,
-            the scenic beauty of Kullu, and the adventurous landscapes of
-            Manali.
+            Escape to the majestic Himalayas. Experience snow-capped peaks, pine forests, and thrilling adventure sports in this beautiful Himachal Pradesh tour.
           </p>
         </section>
 
@@ -300,49 +303,35 @@
             </h3>
             <div class="timeline">
               <div class="timeline-item">
-                <div class="timeline-day">Day 1 & 2: Shimla</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 1-2: Shimla</div>
                 <div class="timeline-content">
-                  <h4>Arrival & Colonial Charm</h4>
-                  <p>
-                    Arrive and transfer to Shimla. Stroll along the Mall Road,
-                    visit the historic Christ Church, and enjoy panoramic views
-                    from Jakhu Hill.
-                  </p>
+                  <h4>The Queen of Hills</h4>
+                  <p>Stroll along the Ridge and Mall Road. Visit Jakhoo Temple and enjoy panoramic views of the valley.</p>
                 </div>
               </div>
-
               <div class="timeline-item">
-                <div class="timeline-day">Day 3: Kullu Valley</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 3: Journey to Manali</div>
                 <div class="timeline-content">
-                  <h4>River Rafting & Scenic Drives</h4>
-                  <p>
-                    Drive towards Manali via Kullu. Stop for thrilling river
-                    rafting on the Beas River and visit traditional shawl
-                    weaving factories.
-                  </p>
+                  <h4>Scenic Drive</h4>
+                  <p>Drive through Kullu Valley. Stop by the Beas River and visit shawl weaving factories.</p>
                 </div>
               </div>
-
               <div class="timeline-item">
-                <div class="timeline-day">Day 4 & 5: Manali</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 4-5: Manali & Rohtang Pass</div>
                 <div class="timeline-content">
-                  <h4>Adventure & Snow Point</h4>
-                  <p>
-                    Explore Manali. Visit the ancient Hadimba Temple. Take a
-                    full-day excursion to Solang Valley or Rohtang Pass for snow
-                    activities.
-                  </p>
+                  <h4>Snow & Adventure</h4>
+                  <p>Full day excursion to Solang Valley or Rohtang Pass (subject to weather). Enjoy snow activities and stunning vistas.</p>
                 </div>
               </div>
-
               <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="timeline-day">Day 6: Departure</div>
                 <div class="timeline-content">
-                  <h4>Farewell Himalayas</h4>
-                  <p>
-                    Morning breakfast surrounded by mountains. Transfer back for
-                    your onward journey with unforgettable Himalayan memories.
-                  </p>
+                  <h4>Homeward Bound</h4>
+                  <p>Depart from Manali with breathtaking mountain memories.</p>
                 </div>
               </div>
             </div>

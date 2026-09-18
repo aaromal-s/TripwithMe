@@ -85,6 +85,12 @@
         </ul>
 
         <div class="header-controls">
+          <!-- Global Search -->
+          <div class="search-container" style="position: relative; margin-right: 1rem;">
+            <input type="text" id="global-search" class="glass-input" placeholder="Search destinations..." style="padding: 0.5rem 1rem; border-radius: 20px; width: 200px;">
+            <div id="search-results" class="search-results glassmorphism" style="position: absolute; top: 110%; left: 0; width: 100%; border-radius: 8px; display: none; flex-direction: column; z-index: 1000; max-height: 300px; overflow-y: auto;"></div>
+          </div>
+
           <select
             id="currency-select"
             aria-label="Currency"
@@ -202,9 +208,7 @@
             About the Trip
           </h2>
           <p>
-            Relax on the sandy shores and explore the vibrant nightlife of Goa.
-            This 4-day retreat balances the bustling beaches of North Goa with
-            the tranquil, pristine shores and historic churches of South Goa.
+            Experience the ultimate tropical getaway with pristine beaches, vibrant nightlife, and Portuguese heritage. This 4-day Goa retreat is perfect for relaxation and thrill-seekers alike.
           </p>
         </section>
 
@@ -299,49 +303,35 @@
             </h3>
             <div class="timeline">
               <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="timeline-day">Day 1: Arrival & North Goa</div>
                 <div class="timeline-content">
                   <h4>Beaches & Nightlife</h4>
-                  <p>
-                    Arrive in Goa and check into your beachfront resort. Spend
-                    the evening relaxing at Baga or Calangute beach. Experience
-                    the vibrant nightlife.
-                  </p>
+                  <p>Check into your beachfront resort. Spend the evening relaxing at Baga Beach and enjoying the local seafood shacks.</p>
                 </div>
               </div>
-
               <div class="timeline-item">
-                <div class="timeline-day">Day 2: Forts & Panjim</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 2: Old Goa & Culture</div>
                 <div class="timeline-content">
-                  <h4>History & Heritage</h4>
-                  <p>
-                    Visit the historic Fort Aguada. Explore the Latin Quarter of
-                    Fontainhas in Panjim. Evening sunset cruise on the Mandovi
-                    River.
-                  </p>
+                  <h4>Portuguese Heritage</h4>
+                  <p>Visit the Basilica of Bom Jesus, Se Cathedral, and explore the Latin Quarter of Fontainhas.</p>
                 </div>
               </div>
-
               <div class="timeline-item">
-                <div class="timeline-day">Day 3: South Goa</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-day">Day 3: South Goa & Water Sports</div>
                 <div class="timeline-content">
-                  <h4>Churches & Serenity</h4>
-                  <p>
-                    Tour the beautiful churches of Old Goa including Basilica of
-                    Bom Jesus. Relax on the pristine, quiet sands of Colva or
-                    Palolem beach.
-                  </p>
+                  <h4>Thrill & Serenity</h4>
+                  <p>Enjoy water sports like parasailing and jet skiing. Evening sunset cruise on the Mandovi River.</p>
                 </div>
               </div>
-
               <div class="timeline-item">
+                <div class="timeline-dot"></div>
                 <div class="timeline-day">Day 4: Departure</div>
                 <div class="timeline-content">
                   <h4>Farewell Goa</h4>
-                  <p>
-                    Enjoy a final morning swim in the sea. Transfer to the
-                    airport with sun-kissed memories of your beach retreat.
-                  </p>
+                  <p>Enjoy a final morning by the pool before heading to the airport for your onward journey.</p>
                 </div>
               </div>
             </div>

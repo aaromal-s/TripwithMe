@@ -41,6 +41,12 @@
         </ul>
 
         <div class="header-controls">
+          <!-- Global Search -->
+          <div class="search-container" style="position: relative; margin-right: 1rem;">
+            <input type="text" id="global-search" class="glass-input" placeholder="Search destinations..." style="padding: 0.5rem 1rem; border-radius: 20px; width: 200px;">
+            <div id="search-results" class="search-results glassmorphism" style="position: absolute; top: 110%; left: 0; width: 100%; border-radius: 8px; display: none; flex-direction: column; z-index: 1000; max-height: 300px; overflow-y: auto;"></div>
+          </div>
+
           <select id="currency-select" aria-label="Currency" class="glass-select">
             <option value="INR">INR ₹</option>
             <option value="USD">USD $</option>
