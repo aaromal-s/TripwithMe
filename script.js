@@ -327,3 +327,198 @@ if (typewriterText) {
   // Start typing
   setTimeout(type, 1000);
 }
+
+
+// -------------------------------------------------------------
+// Packages Filtering Logic
+// -------------------------------------------------------------
+const filterCheckboxes = document.querySelectorAll('.sidebar input[type="checkbox"]');
+const packageCards = document.querySelectorAll('.pkg-card');
+
+if (filterCheckboxes.length > 0 && packageCards.length > 0) {
+  filterCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', filterPackages);
+  });
+}
+
+function filterPackages() {
+  // Get active region filters
+  const regionFilters = Array.from(document.querySelectorAll('.filter-group:nth-child(1) input:checked')).map(cb => cb.value);
+  // Get active style filters
+  const styleFilters = Array.from(document.querySelectorAll('.filter-group:nth-child(2) input:checked')).map(cb => cb.value);
+
+  packageCards.forEach(card => {
+    const cardRegion = card.getAttribute('data-region');
+    const cardStyle = card.getAttribute('data-style');
+
+    const matchesRegion = regionFilters.length === 0 || regionFilters.includes(cardRegion);
+    const matchesStyle = styleFilters.length === 0 || styleFilters.includes(cardStyle);
+
+    if (matchesRegion && matchesStyle) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// -------------------------------------------------------------
+// Compare Logic
+// -------------------------------------------------------------
+const compareCheckboxes = document.querySelectorAll('.compare-checkbox');
+const compareBar = document.getElementById('compare-bar');
+const compareCountSpan = document.getElementById('compare-count');
+const compareBtn = compareBar ? compareBar.querySelector('button') : null;
+const compareModalOverlay = document.getElementById('compare-modal-overlay');
+const compareCloseBtn = document.getElementById('compare-close-btn');
+const compareGrid = document.getElementById('compare-grid');
+
+let selectedForCompare = [];
+
+if (compareCheckboxes.length > 0) {
+  compareCheckboxes.forEach(cb => {
+    cb.addEventListener('change', (e) => {
+      const card = e.target.closest('.pkg-card');
+      const title = card.querySelector('.pkg-title').innerText;
+      const price = card.querySelector('.pkg-price').innerText;
+      const img = card.querySelector('.pkg-img').src;
+      const highlights = Array.from(card.querySelectorAll('.flip-card-back li')).map(li => li.innerText);
+
+      if (e.target.checked) {
+        if (selectedForCompare.length >= 3) {
+          alert('You can only compare up to 3 packages at a time.');
+          e.target.checked = false;
+          return;
+        }
+        selectedForCompare.push({ title, price, img, highlights });
+      } else {
+        selectedForCompare = selectedForCompare.filter(item => item.title !== title);
+      }
+
+      updateCompareBar();
+    });
+  });
+}
+
+function updateCompareBar() {
+  if (!compareBar) return;
+  compareCountSpan.innerText = selectedForCompare.length;
+  if (selectedForCompare.length > 0) {
+    compareBar.classList.add('visible');
+  } else {
+    compareBar.classList.remove('visible');
+  }
+}
+
+if (compareBtn && compareModalOverlay) {
+  compareBtn.addEventListener('click', () => {
+    populateCompareModal();
+    compareModalOverlay.classList.add('active');
+  });
+}
+
+if (compareCloseBtn && compareModalOverlay) {
+  compareCloseBtn.addEventListener('click', () => {
+    compareModalOverlay.classList.remove('active');
+  });
+  compareModalOverlay.addEventListener('click', (e) => {
+    if (e.target === compareModalOverlay) {
+      compareModalOverlay.classList.remove('active');
+    }
+  });
+}
+
+function populateCompareModal() {
+  if (!compareGrid) return;
+  compareGrid.innerHTML = '';
+  
+  selectedForCompare.forEach(pkg => {
+    const col = document.createElement('div');
+    col.className = 'compare-col glassmorphism';
+    col.innerHTML = `
+      <img src="${pkg.img}" alt="${pkg.title}" style="width:100%; border-radius: 8px; margin-bottom: 1rem;" />
+      <h3 style="color:var(--primary-accent); margin-bottom: 0.5rem;">${pkg.title}</h3>
+      <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">${pkg.price}</div>
+      <ul style="list-style-type:none; padding:0; text-align:left;">
+        ${pkg.highlights.map(h => `<li style="margin-bottom:0.5rem; font-size:0.9rem;">${h}</li>`).join('')}
+      </ul>
+    `;
+    compareGrid.appendChild(col);
+  });
+}
+
+
+// -------------------------------------------------------------
+// Interactive Map (Leaflet.js)
+// -------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const mapContainer = document.getElementById('itinerary-map');
+  // Check if map container exists and Leaflet is loaded
+  if (mapContainer && typeof L !== 'undefined') {
+    // Initialize map centered roughly around Rajasthan (Jaipur)
+    const map = L.map('itinerary-map').setView([26.9124, 75.7873], 7);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Add markers for the itinerary
+    const locations = [
+      { name: "Jaipur", coords: [26.9124, 75.7873] },
+      { name: "Jodhpur", coords: [26.2389, 73.0243] },
+      { name: "Udaipur", coords: [24.5854, 73.7125] }
+    ];
+
+    const latlngs = [];
+    locations.forEach(loc => {
+      const marker = L.marker(loc.coords).addTo(map);
+      marker.bindPopup(`<b>${loc.name}</b>`).openPopup();
+      latlngs.push(loc.coords);
+    });
+
+    // Draw a line connecting the locations
+    const polyline = L.polyline(latlngs, { color: 'var(--primary-base)', weight: 4 }).addTo(map);
+    map.fitBounds(polyline.getBounds(), { padding: [50, 50] });
+  }
+
+  // -------------------------------------------------------------
+  // Reviews Submission Logic
+  // -------------------------------------------------------------
+  const reviewForm = document.getElementById('review-form');
+  const reviewsList = document.getElementById('reviews-list');
+
+  if (reviewForm && reviewsList) {
+    reviewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('reviewer-name').value;
+      const rating = parseInt(document.getElementById('review-rating').value);
+      const text = document.getElementById('review-text').value;
+      
+      const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+      const newReview = document.createElement('div');
+      newReview.className = 'review-card glassmorphism';
+      newReview.style.padding = '1.5rem';
+      newReview.style.display = 'flex';
+      newReview.style.gap = '1rem';
+      newReview.style.alignItems = 'flex-start';
+
+      newReview.innerHTML = `
+        <div class="user-avatar" style="width: 50px; height: 50px; font-size: 1.2rem; flex-shrink: 0;">${initials}</div>
+        <div>
+          <h4 style="margin-bottom: 0.2rem;">${name}</h4>
+          <div style="color: #f59e0b; font-size: 1.2rem; margin-bottom: 0.5rem;">${stars}</div>
+          <p style="color: var(--text-dark);">${text}</p>
+        </div>
+      `;
+
+      // Insert at the top
+      reviewsList.insertBefore(newReview, reviewsList.firstChild);
+      reviewForm.reset();
+    });
+  }
+});
